@@ -96,6 +96,15 @@ const iconLikes =document.querySelector(".like-button__icon");
 
 likeBtn.addEventListener('click' , 
 function(){
-     iconLikes.classList.toggle('like-button--liked');
-     
-});
+
+     iconLikes.classList.toggle("like-button--liked");
+     let counterLikes = document.querySelector(".js-likes-counter");
+     if (iconLikes.classList.contains('like-button--liked')) {
+         counterLikes.innerHTML++;
+         console.log(counterLikes);
+     } else if (!iconLikes.classList.contains('like-button--liked')) {
+         counterLikes.innerHTML--;
+         console.log(counterLikes);
+     }
+ }
+);
