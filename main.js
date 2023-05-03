@@ -77,7 +77,7 @@ for (let i = 0; i < posts.length; i++) {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="like-button  js-like-button"  data-postid="${posts[i].id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -91,20 +91,33 @@ for (let i = 0; i < posts.length; i++) {
 }
 
 // aggiungiamo la funzionalitò per aggiungere il bottone like
-const likeBtn = document.querySelector(".like-button");
-const iconLikes =document.querySelector(".like-button__icon");
 
-likeBtn.addEventListener('click' , 
-function(){
+const eleLikeButtons = document.querySelectorAll(".like-button");
+const eleCounters = document.querySelectorAll(".js-likes-counter")
 
-     iconLikes.classList.toggle("like-button--liked");
-     let counterLikes = document.querySelector(".js-likes-counter");
-     if (iconLikes.classList.contains('like-button--liked')) {
-         counterLikes.innerHTML++;
-         console.log(counterLikes);
-     } else if (!iconLikes.classList.contains('like-button--liked')) {
-         counterLikes.innerHTML--;
-         console.log(counterLikes);
-     }
- }
-);
+for (let i = 0; i< eleLikeButtons.length; i++){
+const eleLike = eleLikeButtons[i];
+   
+eleLike.addEventListener("click", function(){
+
+    
+    
+  const  eleCounter = eleCounters[i];
+
+/** il pulsate è stato già cliccato **/
+
+if  ( eleLike.classList.contains('like-button--liked')){
+
+    posts[i].likes -= 1
+}
+
+
+else{
+    posts[i].likes += 1
+}
+
+eleLike.classList.toggle('like-button--liked');
+eleCounter.innerHTML = `${posts[i].likes}`
+
+});
+}
