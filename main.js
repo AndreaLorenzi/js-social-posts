@@ -83,16 +83,19 @@ for (let i = 0; i < posts.length; i++) {
                 </a>
             </div>
             <div class="likes__counter">
-                Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
             </div>
         </div> 
     </div>            
 </div>` 
 }
 
-const likeBtn = document.querySelector(".like-button")
+// aggiungiamo la funzionalitò per aggiungere il bottone like
+const likeBtn = document.querySelector(".like-button");
+const iconLikes =document.querySelector(".like-button__icon");
 
 likeBtn.addEventListener('click' , 
 function(){
-    console.log()
-})
+     iconLikes.classList.toggle('like-button--liked');
+     
+});
