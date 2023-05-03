@@ -120,6 +120,6 @@ h1 {
 }
 
 .like-button--liked {
-    color: red;
+    color: #0CD977;
     cursor: default;
 }
